@@ -34,7 +34,7 @@ public class loginpage extends AppCompatActivity {
         {
             Toast.makeText ( loginpage.this , "Logged in.." , Toast.LENGTH_SHORT ).show ( );
             finish();
-            startActivity(new Intent(getApplicationContext(), profile.class));
+            startActivity(new Intent ( this,profile.class ));
         }
 
         progressDialog=new ProgressDialog ( this );
@@ -80,21 +80,22 @@ public class loginpage extends AppCompatActivity {
         }
         progressDialog.setMessage("Logging You in Please Wait...");
         progressDialog.show();
-        firebaseAuth.createUserWithEmailAndPassword(Email, password)
+        firebaseAuth.signInWithEmailAndPassword ( Email,password )
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult> () {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressDialog.dismiss ();
                 //checking if success
                 if(task.isSuccessful()){
-                    Toast.makeText ( loginpage.this , "Logged in.." , Toast.LENGTH_SHORT ).show ( );
                     finish();
-                    startActivity(new Intent(getApplicationContext(), profile.class));
-
+                    Toast.makeText ( loginpage.this , "Logged in.." , Toast.LENGTH_SHORT ).show ( );
+                    startActivity ( new Intent ( getApplicationContext ( ) , profile.class ) );
+                    startActivity ( new Intent ( loginpage.this,profile.class ) );
                 }
                 else{
                     //display some message here
                     Toast.makeText(loginpage.this,"Logging Error",Toast.LENGTH_LONG).show();
+                    return;
                 }
                 progressDialog.dismiss();
             }
