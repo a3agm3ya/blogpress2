@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.blogpress">
+    xmlns:tools="http://schemas.android.com/tools"
+
+    package="com.example.blogpress"
+    tools:replace="android:allowBackup"
+
+    tools:ignore="ExtraText">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
+    //Add this in the manifest tag at the top
+
+    "
 
     <application
         android:allowBackup="true"
@@ -11,13 +20,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".profile"></activity>
-        <activity android:name=".loginpage" />
+        <activity android:name=".profile"
+            tools:ignore="Instantiatable" />
+
         <activity
+
+            android:theme="@style/splashTheme"
             android:name=".MainActivity"
-            android:theme="@style/splashTheme">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

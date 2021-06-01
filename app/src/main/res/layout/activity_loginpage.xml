@@ -7,12 +7,12 @@
     android:padding="20dp"
     android:layout_margin="10dp"
     tools:context=".MainActivity">
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="10sp"
         app:cardMaxElevation="20dp">
         <LinearLayout
             android:orientation="vertical"
@@ -29,6 +29,7 @@
                 android:textStyle="bold"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="User Login"
+
                 android:id="@+id/textView"
                 android:layout_gravity="center_horizontal" />
             <EditText
@@ -71,5 +72,5 @@
                 android:text="New user|Sign in here."/>
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>

@@ -2,7 +2,7 @@ package com.example.blogpress;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,7 +37,7 @@ public class profile extends AppCompatActivity {
 
        }
        FirebaseUser user=firebaseAuth.getCurrentUser ();
-        databaseReference= FirebaseDatabase.getInstance ().getReference ();
+        databaseReference= FirebaseDatabase.getInstance ().getReference("userinf");
         txtt01=findViewById ( R.id.txt01);
         Name=findViewById ( R.id.name );
         hobbies=findViewById (R.id.hob);
@@ -50,15 +50,7 @@ public class profile extends AppCompatActivity {
 
         blogout=findViewById ( R.id.bt01);
 
-        private void SaveUserInfo() {
-            String name = Name.getText ( ).toString ( ).trim ( );
-            String hobb = hobbies.getText ( ).toString ( ).trim ( );
-            String abutu = aboutu.getText ( ).toString ( ).trim ( );
-            userinf userinf = new userinf ( name , hobb , abutu );
-            FirebaseUser User = firebaseAuth.getCurrentUser ( );
-            databaseReference.child ( User.getUid ( ) ).setValue ( userinf );
-            Toast.makeText ( this , "Profile Updated." , Toast.LENGTH_SHORT ).show ( );
-        }
+
         blogout.setOnClickListener ( new View.OnClickListener ( ) {
            @Override
            public void onClick(View v) {
@@ -85,5 +77,14 @@ public class profile extends AppCompatActivity {
 
 
 
+    }
+    private void SaveUserInfo() {
+        String name = Name.getText ( ).toString ( ).trim ( );
+        String hobb = hobbies.getText ( ).toString ( ).trim ( );
+        String abutu = aboutu.getText ( ).toString ( ).trim ( );
+        userinf userinf = new userinf ( name , hobb , abutu );
+        FirebaseUser User = firebaseAuth.getCurrentUser ( );
+        databaseReference.child ( User.getUid ( ) ).setValue ( userinf );
+        Toast.makeText ( this , "Profile Updated." , Toast.LENGTH_SHORT ).show ( );
     }
 }
